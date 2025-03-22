@@ -14,6 +14,7 @@ class TokenType(Enum):
     POW = "POW"
     MODUL = "MODUL"
     SEMICOLON = "SEMICOLON"
+    NEWLINE = "NEWLINE"
     LPAREN = "LPAREN"
     RPAREN = "RPAREN"
     EQUALS = "EQUALS"
