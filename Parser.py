@@ -118,7 +118,6 @@ class Parser:
 
     def __parse_expression(self, precendence: PrecedenceType) -> Expression:
         prefix_fn: Callable | None = self.prefix_parse_fns.get(self.current_token.type)
-        print(self.current_token)
         if prefix_fn is None:
             self.__no_prefix_parse_fn_error(self.current_token.type)
             return None  # pyright: ignore[reportReturnType]
