@@ -14,11 +14,9 @@ class TokenType(Enum):
     POW = "POW"
     MODUL = "MODUL"
     SEMICOLON = "SEMICOLON"
-    NEWLINE = "NEWLINE"
     LPAREN = "LPAREN"
     RPAREN = "RPAREN"
     EQUALS = "EQUALS"
-    EMPTY = "EMPTY"
 
 class Token:
     def __init__(self, type: TokenType, literal: Any, line_no, position: int) -> None:

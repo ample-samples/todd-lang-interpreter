@@ -22,7 +22,9 @@ class Lexer:
         self.read_postion += 1
 
     def __skip_whitespace(self) -> None:
-        while self.current_char in [' ', '\t', '\r']:
+        while self.current_char in [' ', '\n', '\t', '\r']:
+            if self.current_char == '\n':
+                self.line_no += 1
             self.__read_char()
 
     def __new_token(self, tt: TokenType, literal: Any) -> Token:
@@ -52,8 +54,7 @@ class Lexer:
 
 
     def next_token(self) -> Token:
-        tok: Token = self.__new_token(TokenType.EMPTY, "EMPTY")
-
+        tok: Token = None
         self.__skip_whitespace()
 
         match self.current_char:
@@ -75,11 +76,6 @@ class Lexer:
                 tok = self.__new_token(TokenType.RPAREN, self.current_char)
             case ';':
                 tok = self.__new_token(TokenType.SEMICOLON, self.current_char)
-            case '\n':
-                tok = self.__new_token(TokenType.NEWLINE, "\\n")
-                self.line_no += 1
-            case '=':
-                tok = self.__new_token(TokenType.EQUALS, self.current_char)
             case None:
                 tok = self.__new_token(TokenType.EOF, self.current_char)
             case _:
