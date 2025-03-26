@@ -22,4 +22,5 @@ if __name__ == '__main__':
         program: Program = parser.parse_program()
 
         with open("debug/ast.json", "w") as f:
+            print(program.json())
             json.dump(program.json(), f, indent=4)
